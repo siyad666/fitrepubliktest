@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+
+
+
+    <meta charset="utf-8" />
+
+    <title></title>
+
+</head>
+
+<body >
+
+    <h1>{{title}}</h1>
+
+    <h3>Customer</h3>
+
+    <hr />
+
+    <form [formGroup]="customerForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+       
+        <div class="form-group row">
+
+            <span class="col-md-12"><strong>First Name</strong></span>
+
+            <div class="col-md-4">
+
+                <input class="form-control"  placeholder="First Name"  type="text" formControlName="firstName">
+
+            </div>
+
+            <span class="text-danger" *ngIf="customerForm.hasError('required', 'firstName') && formDir.submitted">
+
+                First Name is required.
+
+            </span>
+
+        </div>
+        <div class="form-group row">
+
+            <span class="col-md-12"><strong>Last Name</strong></span>
+
+            <div class="col-md-4">
+
+                <input class="form-control"  placeholder="Last Name"  type="text" formControlName="lastName">
+
+            </div>
+
+            <span class="text-danger" *ngIf="customerForm.hasError('required', 'lastName') && formDir.submitted">
+
+                LastName is required.
+
+            </span>
+
+        </div>
+
+        <div class="form-group row">
+
+          
+            <span class="col-md-12"><strong>DOB</strong></span>
+            <div class="col-md-4">
+
+                <input class="form-control" date="dd-M-yyyy"  type="date"  placeholder="Date of birth"   formControlName="dateOfBirth">
+
+            </div>
+
+            <span class="text-danger" *ngIf="customerForm.hasError('required', 'dateOfBirth') && formDir.submitted">
+
+                DOB is required.
+
+            </span>
+
+        </div>
+
+        <div class="form-group row">
+
+            <span class="col-md-12"><strong>Email</strong></span>
+
+            <div class="col-md-4">
+
+                <input class="form-control" placeholder="Email address"  type="email" formControlName="email" required>
+
+                <span *ngIf="customerForm.hasError('email', 'email') && customerForm.get('email').touched">
+                Please enter the correct email, this email not valid.</span>
+
+            </div>
+
+            <span class="text-danger" *ngIf="customerForm.hasError('required', 'email') && formDir.submitted">
+
+                Email is required
+
+            </span>
+
+        </div>
+
+        <div class="form-group row">
+
+            <span class="col-md-12"><strong>Telephone</strong></span>
+
+            <div class="col-md-4">
+
+                <input class="form-control" placeholder="Phone number" type="text" formControlName="telephone" data-val="true">
+
+            </div>
+
+
+        </div>
+
+        <div class="form-group">
+
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+
+            <button class="btn btn-sm btn-warning" (click)="cancel()">Cancel</button>
+
+        </div>
+
+    </form>
+
+</body>
+
+</html>
